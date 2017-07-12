@@ -27,6 +27,7 @@ LDFLAGS = -g -ls -lm
 PRGNAME = guruguru
 FILENAME = guruguru
 CAPTION = ぐるぐるP/ECE
+ICON = icon.pid
 OBJS =	main.o Lcd.o PrecisionTimer.o
 
 $(PRGNAME).srf : $(OBJS)
@@ -35,8 +36,8 @@ $(PRGNAME).srf : $(OBJS)
 # 依存関係
 
 # フラッシュ書き込みイメージ生成
-pex : $(PRGNAME).srf
-	ppack -e $(PRGNAME).srf -o$(FILENAME).pex -n$(CAPTION)
+pex : $(PRGNAME).srf $(ICON)
+	ppack -e $(PRGNAME).srf -o$(FILENAME).pex -n$(CAPTION) -i$(ICON)
 
 # クリーンアップ
 clean:
