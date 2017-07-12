@@ -1,9 +1,6 @@
 #include <piece.h>
 
 #include "Lcd.h"
-#include "PrecisionTimer.h"
-
-static PrecisionTimer g_timer;
 
 typedef enum tagGameMode
 {
@@ -65,7 +62,6 @@ void pceAppInit( void )
 	{
 		pceFontSetTxColor( 3 );
 		pceFontSetBkColor( FC_SPRITE );
-		PrecisionTimer_Construct( &g_timer );
 		ChangeMode( GameMode_Title );
 	}
 }
@@ -73,8 +69,6 @@ void pceAppInit( void )
 /// ÉÅÉCÉì.
 void pceAppProc( int cnt )
 {
-	PrecisionTimer timer;
-	PrecisionTimer_Construct( &timer );
 	pceLCDPaint( 0, 0, 0, DISP_X, DISP_Y );
 	switch( g_mode )
 	{
@@ -95,10 +89,6 @@ void pceAppProc( int cnt )
 		break;
 	}
 	
-	pceFontSetType( 2 );
-	pceFontSetPos( 0, 82 );
-	pceFontPrintf( "%8lu/%8luus FREE:%8d", PrecisionTimer_Count( &timer ),
-		PrecisionTimer_Count( &g_timer ), pceHeapGetMaxFreeSize() );
 	Lcd_Update();
 	Lcd_Trans();
 	++g_count;
