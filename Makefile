@@ -28,7 +28,7 @@ PRGNAME = guruguru
 FILENAME = guruguru
 CAPTION = ÇÆÇÈÇÆÇÈP/ECE
 ICON = icon.pid
-OBJS =	main.o Lcd.o PrecisionTimer.o
+OBJS =	main.o Lcd.o
 
 $(PRGNAME).srf : $(OBJS)
 	$(LD) $(LDFLAGS) -e$(PRGNAME).srf $(OBJS)
